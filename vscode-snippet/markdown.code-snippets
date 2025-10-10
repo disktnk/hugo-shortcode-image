@@ -1,0 +1,24 @@
+{
+	"Hidden Footnote Reference": {
+        "prefix": "hfn",
+        "body": [
+            "<span class=\"hidden-footnote-refs\">[^$1]</span>"
+        ],
+        "description": "Insert hidden footnote reference for caption footnotes"
+    },
+    "Image without Footnote": {
+        "prefix": "img",
+        "body": [
+            "{{< image url=\"$1\" caption=\"$2\" size=\"75%\" >}}"
+        ],
+        "description": "Insert image shortcode with hidden footnote reference"
+    },
+    "Image with Footnote": {
+        "prefix": "imgfn",
+        "body": [
+            "<span class=\"hidden-footnote-refs\">[^$1]</span>",
+            "{{< image url=\"$2\" caption=\"$3[^$1]\" size=\"75%\" >}}"
+        ],
+        "description": "Insert image shortcode with hidden footnote reference"
+    }
+}
