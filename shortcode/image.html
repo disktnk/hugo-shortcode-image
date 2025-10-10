@@ -1,0 +1,17 @@
+{{- $url := .Get "url" }}
+{{- $caption := .Get "caption"}}
+{{- $size := .Get "size" | default "100%" }}
+{{- $zoom := .Get "zoom" | default false }}
+{{- /* Convert footnote references in caption manually */ -}}
+{{- $processedCaption := $caption | replaceRE `\[\^(\d+)\]` `<sup><a href="#fn:$1" class="footnote-ref" role="doc-noteref">$1</a></sup>` | markdownify }}
+{{- /* Create plain text version for alt attribute (remove footnote references) */ -}}
+{{- $plainCaption := $caption | replaceRE `\[\^\d+\]` `` | plainify }}
+<div class="post-image">
+  <img src="{{ $url }}" alt="{{ $plainCaption }}" class="post-image-box{{ if $zoom }} zoomable{{ end }}" style="max-width: {{ $size }}" {{ if $zoom }}onclick="openModal(this)"{{ end }}>
+  <p class="post-image-caption">{{ $processedCaption | safeHTML }}</p>
+</div>
+{{ if $zoom -}}
+<div class="modal" onclick="this.classList.remove('show')">
+  <img src="{{ $url }}" alt="{{ $plainCaption }}">
+</div>
+{{ end -}}

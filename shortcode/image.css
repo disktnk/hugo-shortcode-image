@@ -1,0 +1,50 @@
+.post-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.post-image-box {
+  height: auto;
+}
+.post-image-caption {
+  text-align: center;
+  font-size: 0.9em;
+}
+/* Style when zoom is enabled */
+.post-image-box.zoomable {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 2rem;
+}
+.modal img {
+  max-width: 90%;
+  max-height: 90vh;
+  margin: auto;
+  display: block;
+}
+.modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Hidden footnote references for ensuring Hugo processes them */
+/* hide visually but keep in the DOM for anchor links */
+.hidden-footnote-refs {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
